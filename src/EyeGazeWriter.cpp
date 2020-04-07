@@ -8,7 +8,7 @@
 void EyeGazeWriter::WriteHeader()
 {
 	// create header and write it.
-	header = "gazeX,gazyY,gazeZ\n";
+	header = "gazeX,gazyY,gazeZ,secondsElapsed\n";
 	WriteToDataFile(header);
 }
 
@@ -51,7 +51,7 @@ void EyeGazeWriter::WriteData()
 			float* gaze = eye_data.verbose_data.left.gaze_direction_normalized.elem_;
 
 			std::ostringstream data;
-			data << gaze[0] << ',' << gaze[1] << ',' << gaze[2] << '\n';
+			data << gaze[0] << ',' << gaze[1] << ',' << gaze[2] << ',' << getSecondsElapsed() << '\n';
 			WriteToDataFile(data.str());
 		}
 	}

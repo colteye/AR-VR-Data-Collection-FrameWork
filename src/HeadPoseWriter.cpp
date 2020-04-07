@@ -3,7 +3,7 @@
 
 void HeadPoseWriter::WriteHeader()
 {
-	header = "posX,posY,posZ\n";
+	header = "posX,posY,posZ,secondsElapsed\n";
 	WriteToDataFile(header);
 }
 
@@ -26,7 +26,7 @@ void HeadPoseWriter::WriteData()
 	//float rotation[3];
 
 	std::ostringstream data;
-	data << position[0] << ',' << position[1] << ',' << position[2] << '\n';
+	data << position[0] << ',' << position[1] << ',' << position[2] << ',' << getSecondsElapsed() << '\n';
 	WriteToDataFile(data.str());
 }
 
