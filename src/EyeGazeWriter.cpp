@@ -21,7 +21,8 @@ bool EyeGazeWriter::InitializeDataProvider()
 	}
 
 	// Conditions based on if eye engine can be initialized.
-	switch (ViveSR::anipal::Initial(ViveSR::anipal::Eye::ANIPAL_TYPE_EYE, NULL))
+	int error = ViveSR::anipal::Initial(ViveSR::anipal::Eye::ANIPAL_TYPE_EYE, NULL);
+	switch (error)
 	{
 		case (ViveSR::Error::WORK):
 			EnableEye = true;
